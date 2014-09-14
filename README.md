@@ -9,7 +9,7 @@ anywhere that you switch between fragments and would like to retain instance sta
 * Retains instance state of Fragments even when removing them from your activity.
 * Compatible with existing adapters: FragmentPagerAdapter and FragmentStatePagerAdapter
 * Adapter determines fragment retention policy.  See the documentation for the two adapters above.
-* Includes two new adapters: FragmentArrayPagerAdapter and FragmentStateArrayPagerAdapter. You do
+* Includes two new adapters: FragmentArrayPagerAdapter and FragmentStateArrayPagerAdapter. You no
 longer have to subclass PagerAdapter to use FragmentSwitcher, just supply an array of fragments.
 
 The sample app shows a demo of a navigation drawer with 100 fragments in a 
