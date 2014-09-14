@@ -1,7 +1,7 @@
 FragmentSwitcher
 ================
 
-FragmentSwitcher is an adapter-based fragment container similar to a ViewPager.
+FragmentSwitcher is an adapter-based, state-saving fragment container similar to a ViewPager.
 
 It was designed with the NavigationDrawer and Tab patterns in mind but can be used
 anywhere that you switch between fragments and would like to retain instance state.
