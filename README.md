@@ -24,7 +24,7 @@ Usage
 mFragmentSwitcher = (FragmentSwitcher) findViewById(R.id.fragment_switcher)
 mFragmentAdapter = new FragmentStateArrayPagerAdapter(getSupportFragmentManager());
 mFragmentSwitcher.setAdapter(mFragmentAdapter);
-List<Fragment> fragments = Arrays.asList(fragment1, fragment2, fragment3)
+List<Fragment> fragments = Arrays.asList(fragment1, fragment2, fragment3);
 mFragmentAdapter.addAll(fragments);
 mFragmentSwitcher.setCurrentItem(2);
 ```
