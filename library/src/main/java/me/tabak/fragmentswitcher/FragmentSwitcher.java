@@ -283,10 +283,7 @@ public class FragmentSwitcher extends FrameLayout {
   }
 
   /**
-   * This is the persistent state that is saved by ViewPager.  Only needed
-   * if you are creating a sublass of ViewPager that must save its own
-   * state, in which case it should implement a subclass of this which
-   * contains that state.
+   * This is the persistent state that is saved by FragmentSwitcher.
    */
   public static class SavedState extends BaseSavedState {
     int position;
