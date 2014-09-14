@@ -12,7 +12,7 @@ anywhere that you switch between fragments and would like to retain instance sta
 * Includes two new adapters: FragmentArrayPagerAdapter and FragmentStateArrayPagerAdapter. You no
 longer have to subclass PagerAdapter to use FragmentSwitcher, just supply an array of fragments.
 
-The sample app shows a demo of a navigation drawer with 100 fragments in a 
+The sample app shows a demo of a navigation drawer with a lot fragments in a 
 FragmentStateArrayPagerAdapter that can maintain the state of an edittext and listview.  The sample
 also includes an example of saving a ListView's adapter content to InstanceState and restoring it
 later.
