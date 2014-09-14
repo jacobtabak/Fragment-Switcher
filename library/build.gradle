@@ -9,7 +9,7 @@ android {
         minSdkVersion 7
         targetSdkVersion 20
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
     }
     buildTypes {
         release {
@@ -23,4 +23,9 @@ dependencies {
     compile 'com.android.support:support-v4:20.+'
 }
 
-apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
+apply from: 'gradle-maven-push.gradle'
+
+
+afterEvaluate {
+    androidJavadocs.classpath += project.android.libraryVariants.toList().first().javaCompile.classpath
+}
