@@ -129,6 +129,14 @@ public class FragmentSwitcher extends FrameLayout {
     }
   }
 
+  public int getCurrentItem() {
+    return mCurrentPosition;
+  }
+
+  public Fragment getCurrentFragment() {
+    return mCurrentFragment;
+  }
+
   /**
    * Set the currently selected page.
    *
