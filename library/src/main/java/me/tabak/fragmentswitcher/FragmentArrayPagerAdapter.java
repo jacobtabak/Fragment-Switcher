@@ -24,20 +24,21 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+
 /**
  * A {@link android.support.v4.app.FragmentPagerAdapter} that does not need to
  * be subclassed and can be filled like an array.
  */
 @SuppressWarnings("UnusedDeclaration")
-public class FragmentArrayPagerAdapter extends FragmentPagerAdapter {
-  private List<Fragment> mItems = new ArrayList<Fragment>();
+public class FragmentArrayPagerAdapter<T extends Fragment> extends FragmentPagerAdapter {
+  private List<T> mItems = new ArrayList<T>();
 
   public FragmentArrayPagerAdapter(FragmentManager fm) {
     super(fm);
   }
 
   @Override
-  public Fragment getItem(int i) {
+  public T getItem(int i) {
     return mItems.get(i);
   }
 
@@ -50,7 +51,7 @@ public class FragmentArrayPagerAdapter extends FragmentPagerAdapter {
    * Adds the specified fragment at the end of the array.
    * @param fragment
    */
-  public void add(Fragment fragment) {
+  public void add(T fragment) {
     mItems.add(fragment);
     notifyDataSetChanged();
   }
@@ -59,7 +60,7 @@ public class FragmentArrayPagerAdapter extends FragmentPagerAdapter {
    * Adds the specified Collection of fragments at the end of the array.
    * @param fragments
    */
-  public void addAll(Collection<Fragment> fragments) {
+  public void addAll(Collection<T> fragments) {
     mItems.addAll(fragments);
     notifyDataSetChanged();
   }
@@ -68,8 +69,8 @@ public class FragmentArrayPagerAdapter extends FragmentPagerAdapter {
    * Adds the specified fragments at the end of the array.
    * @param fragments
    */
-  public void addAll(Fragment... fragments) {
-    for (Fragment fragment : fragments) {
+  public void addAll(T... fragments) {
+    for (T fragment : fragments) {
       mItems.add(fragment);
     }
     notifyDataSetChanged();
@@ -88,7 +89,7 @@ public class FragmentArrayPagerAdapter extends FragmentPagerAdapter {
    * @param fragment
    * @param index
    */
-  public void insert(Fragment fragment, int index) {
+  public void insert(T fragment, int index) {
     mItems.add(index, fragment);
     notifyDataSetChanged();
   }

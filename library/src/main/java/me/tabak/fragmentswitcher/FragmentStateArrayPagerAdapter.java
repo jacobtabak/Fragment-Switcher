@@ -24,13 +24,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+
 /**
  * A {@link android.support.v4.app.FragmentStatePagerAdapter} that does not need to
  * be subclassed and can be filled like an array.
  */
 @SuppressWarnings("UnusedDeclaration")
-public class FragmentStateArrayPagerAdapter extends FragmentStatePagerAdapter {
-  private List<Fragment> mItems = new ArrayList<Fragment>();
+public class FragmentStateArrayPagerAdapter<T extends Fragment> extends FragmentStatePagerAdapter {
+  private List<T> mItems = new ArrayList<T>();
 
   public FragmentStateArrayPagerAdapter(FragmentManager fm) {
     super(fm);
@@ -50,7 +51,7 @@ public class FragmentStateArrayPagerAdapter extends FragmentStatePagerAdapter {
    * Adds the specified fragment at the end of the array.
    * @param fragment
    */
-  public void add(Fragment fragment) {
+  public void add(T fragment) {
     mItems.add(fragment);
     notifyDataSetChanged();
   }
@@ -59,7 +60,7 @@ public class FragmentStateArrayPagerAdapter extends FragmentStatePagerAdapter {
    * Adds the specified Collection of fragments at the end of the array.
    * @param fragments
    */
-  public void addAll(Collection<Fragment> fragments) {
+  public void addAll(Collection<T> fragments) {
     mItems.addAll(fragments);
     notifyDataSetChanged();
   }
@@ -68,8 +69,8 @@ public class FragmentStateArrayPagerAdapter extends FragmentStatePagerAdapter {
    * Adds the specified fragments at the end of the array.
    * @param fragments
    */
-  public void addAll(Fragment... fragments) {
-    for (Fragment fragment : fragments) {
+  public void addAll(T... fragments) {
+    for (T fragment : fragments) {
       mItems.add(fragment);
     }
     notifyDataSetChanged();
@@ -88,7 +89,7 @@ public class FragmentStateArrayPagerAdapter extends FragmentStatePagerAdapter {
    * @param fragment
    * @param index
    */
-  public void insert(Fragment fragment, int index) {
+  public void insert(T fragment, int index) {
     mItems.add(index, fragment);
     notifyDataSetChanged();
   }

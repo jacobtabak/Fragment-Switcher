@@ -33,6 +33,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+
 /**
  * A fragment switcher similar to a {@link android.support.v4.view.ViewPager}
  * that cannot be swiped and does not keep offscreen fragments like a ViewPager.
@@ -60,6 +61,7 @@ public class FragmentSwitcher extends FrameLayout {
   private ClassLoader mRestoredClassLoader;
   private boolean mInLayout;
   private int mCurrentPosition;
+  private OnPageChangeListener mOnPageChangeListener;
 
   public FragmentSwitcher(Context context) {
     super(context);
@@ -170,6 +172,13 @@ public class FragmentSwitcher extends FrameLayout {
     }
   }
 
+  /**
+   * Callback interface for responding to changing state of the selected page.
+   */
+  public interface OnPageChangeListener {
+    public void onPageChanged(int page);
+  }
+
   Fragment addNewItem(int position) {
     try {
       return (Fragment) mAdapter.instantiateItem(this, position);
@@ -252,11 +261,11 @@ public class FragmentSwitcher extends FrameLayout {
         resName = Integer.toHexString(getId());
       }
       throw new IllegalStateException("The application's PagerAdapter changed the adapter's" +
-          " contents without calling PagerAdapter#notifyDataSetChanged!" +
-          " Expected adapter item count: " + mExpectedAdapterCount + ", found: " + N +
-          " Pager id: " + resName +
-          " Pager class: " + getClass() +
-          " Problematic adapter: " + mAdapter.getClass());
+                                      " contents without calling PagerAdapter#notifyDataSetChanged!" +
+                                      " Expected adapter item count: " + mExpectedAdapterCount + ", found: " + N +
+                                      " Pager id: " + resName +
+                                      " Pager class: " + getClass() +
+                                      " Problematic adapter: " + mAdapter.getClass());
     }
 
     mAdapter.startUpdate(this);
@@ -269,6 +278,7 @@ public class FragmentSwitcher extends FrameLayout {
     if ((mCurrentFragment == null || mCurrentPosition != position) && mAdapter.getCount() > 0) {
       mCurrentFragment = addNewItem(position);
       mCurrentPosition = position;
+      mOnPageChangeListener.onPageChanged(mCurrentPosition);
     }
 
     mAdapter.setPrimaryItem(this, mCurrentPosition, mCurrentFragment);
@@ -312,11 +322,11 @@ public class FragmentSwitcher extends FrameLayout {
     @Override
     public String toString() {
       return "FragmentSwitcher.SavedState{"
-          + Integer.toHexString(System.identityHashCode(this))
-          + " position=" + position + "}";
+             + Integer.toHexString(System.identityHashCode(this))
+             + " position=" + position + "}";
     }
 
-    public static final Parcelable.Creator<SavedState> CREATOR
+    public static final Creator<SavedState> CREATOR
         = ParcelableCompat.newCreator(new ParcelableCompatCreatorCallbacks<SavedState>() {
       @Override
       public SavedState createFromParcel(Parcel in, ClassLoader loader) {
@@ -405,5 +415,15 @@ public class FragmentSwitcher extends FrameLayout {
    */
   public PagerAdapter getAdapter() {
     return mAdapter;
+  }
+
+  /**
+   * Set a listener that will be invoked whenever the page changes or is incrementally
+   * scrolled. See {@link OnPageChangeListener}.
+   *
+   * @param listener Listener to set
+   */
+  public void setOnPageChangeListener(OnPageChangeListener listener) {
+    mOnPageChangeListener = listener;
   }
 }
