@@ -17,6 +17,15 @@ FragmentStateArrayPagerAdapter that can maintain the state of an edittext and li
 also includes an example of saving a ListView's adapter content to InstanceState and restoring it
 later.
 
+Version History
+---------------
+1.1.0 (9/22/14)
+* Added setOnPageChangeListener(FragmentSwitcher.OnPageChangeListener listener)
+* Added support for generic fragment types in the FragmentSwitcher
+
+1.0.0 (9/13/14)
+* Initial release
+
 Usage
 -----
 
