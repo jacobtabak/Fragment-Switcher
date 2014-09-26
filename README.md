@@ -42,7 +42,7 @@ Download
 --------
 Grab FragmentSwitcher with Gradle:
 
-    compile 'com.timehop.fragmentswitcher:library:1.1.0'
+    compile 'com.timehop.fragmentswitcher:library:1.1.1'
 
 License
 -------
