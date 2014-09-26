@@ -278,7 +278,9 @@ public class FragmentSwitcher extends FrameLayout {
     if ((mCurrentFragment == null || mCurrentPosition != position) && mAdapter.getCount() > 0) {
       mCurrentFragment = addNewItem(position);
       mCurrentPosition = position;
-      mOnPageChangeListener.onPageChanged(mCurrentPosition);
+      if (mOnPageChangeListener != null) {
+        mOnPageChangeListener.onPageChanged(mCurrentPosition);
+      }
     }
 
     mAdapter.setPrimaryItem(this, mCurrentPosition, mCurrentFragment);
